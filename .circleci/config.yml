@@ -9,7 +9,7 @@ orbs:
 jobs:
   build-and-push:
     environment:
-      DOCKER_IMAGE: docker-hai
+      DOCKER_IMAGE: haigun81/docker-reacts
       DOCKER_TAG: latest
     executor: docker/docker
     steps:
