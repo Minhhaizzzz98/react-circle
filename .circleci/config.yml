@@ -3,9 +3,9 @@ version: 2.1
 
 orbs:
   node: circleci/node@4.1
-   docker: circleci/docker@1.7.0
+  docker: circleci/docker@1.7.0
 
-   
+
 jobs:
   build-and-push:
     environment:
@@ -31,10 +31,10 @@ workflows:
   build-deploy:
     jobs:
       - node/test
-      - build-and-push
-          filters:
-            requires:
+      - build-and-push:
+          requires:
               - node/test
+          filters:
             branches:
               only:
                 - main 
