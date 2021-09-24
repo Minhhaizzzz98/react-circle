@@ -1,4 +1,5 @@
 FROM node:stretch-slim as build
+RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
 WORKDIR /app
 COPY . /app
 RUN npm install && npm run build
