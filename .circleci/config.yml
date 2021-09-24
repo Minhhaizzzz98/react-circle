@@ -24,7 +24,8 @@ jobs:
           tag: $DOCKER_TAG
       - docker/push:
           digest-path: /tmp/digest.txt
-          image: my_repo/orb-test
+          image: $DOCKER_IMAGE
+          tag: $DOCKER_TAG
       - run:
           command: |
             echo "Digest is: $(</tmp/digest.txt)"
