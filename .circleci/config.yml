@@ -4,6 +4,8 @@ version: 2.1
 orbs:
   node: circleci/node@4.1
    docker: circleci/docker@1.7.0
+
+   
 jobs:
   build-and-push:
     environment:
@@ -13,7 +15,7 @@ jobs:
     steps:
       - setup_remote_docker
       - checkout
-      - docker/check
+      - docker/check:
           docker-password: DOCKER_PASSWORD
           docker-username: DOCKER_USER
       - docker/build:
