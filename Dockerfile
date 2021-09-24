@@ -1,3 +1,4 @@
+#hai
 FROM node:stretch-slim as build
 RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
 WORKDIR /app
