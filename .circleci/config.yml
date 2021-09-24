@@ -1,4 +1,4 @@
-# This config is equivalent to both the '.circleci/extended/orb-free.yml' and the base '.circleci/config.yml'
+# hai
 version: 2.1
 
 orbs:
