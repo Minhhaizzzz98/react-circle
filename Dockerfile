@@ -1,7 +1,7 @@
 #hai
 FROM node:stretch-slim as build
 RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
-WORKDIR /app
+WORKDIR /usr/src/app
 COPY . /app
 RUN npm install && npm run build
 FROM nginx:latest
