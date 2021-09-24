@@ -14,7 +14,7 @@ jobs:
     executor: docker/docker
     steps:
       - setup_remote_docker:
-          version: 19.03.13
+          version:  20.10.8
       - checkout
       - docker/check:
           docker-password: DOCKER_PASSWORD
