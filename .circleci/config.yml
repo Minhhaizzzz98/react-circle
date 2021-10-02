@@ -40,11 +40,11 @@ workflows:
           filters:
             branches:
               only:
-                - main 
+                - master 
       - heroku/deploy-via-git:
           requires:
             - build-and-push
           filters:
             branches:
               only:
-                - main 
+                - master 
