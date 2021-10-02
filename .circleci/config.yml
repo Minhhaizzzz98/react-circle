@@ -4,7 +4,7 @@ version: 2.1
 orbs:
   node: circleci/node@4.1
   docker: circleci/docker@1.7.0
-  deploy-to-heroku: rise/deploy-to-heroku@0.0.6
+  heroku: circleci/heroku@1.2.6
 
 
 jobs:
