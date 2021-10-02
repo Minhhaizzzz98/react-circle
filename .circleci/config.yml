@@ -41,16 +41,18 @@ jobs:
             docker login --username=HEROKU_LOGIN --password=HEROKU_API_KEY cicd-hai.herokuapp.com
       - run: 
          heroku container:push  -a cicd-hai.herokuapp.com --arg web 
-         heroku container:release  -a << parameters.app-name >>
+         heroku container:release  -a cicd-hai.herokuapp.com
 workflows:
   build-deploy:
     jobs:
       - node/test
-      - build-and-push:
+      - :
           requires:
             - node/test
           filters:
             branches:
               only:
                 - main 
-      - deploy
+      - deploy:
+          requires:
+            - build-and-push
