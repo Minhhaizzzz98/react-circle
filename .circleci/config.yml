@@ -4,7 +4,7 @@ version: 2.1
 orbs:
   node: circleci/node@4.1
   docker: circleci/docker@1.7.0
-  heroku: circleci/heroku@1.2.6
+  deploy-to-heroku: rise/deploy-to-heroku@0.0.6
 
 
 jobs:
@@ -31,8 +31,10 @@ jobs:
           command: |
             echo "Digest is: $(</tmp/digest.txt)"
   deploy:
-    executor: docker/docker
+    executor: heroku/default
     steps:
+      - checkout
+      - heroku/install
       - add_ssh_keys:
           fingerprints:
             - "18:4a:f5:e4:15:19:4e:d6:86:53:70:c8:2d:f0:f8:89"
