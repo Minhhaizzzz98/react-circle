@@ -37,10 +37,11 @@ jobs:
             - "18:4a:f5:e4:15:19:4e:d6:86:53:70:c8:2d:f0:f8:89"
       - run:
           command: |
-            docker login --username=HEROKU_LOGIN --password=HEROKU_API_KEY cicd-hai.herokuapp.com
-      - run: 
-         heroku container:push  -a cicd-hai.herokuapp.com --arg web 
-         heroku container:release  -a cicd-hai.herokuapp.com
+            heroku login --username=HEROKU_LOGIN --password=HEROKU_API_KEY cicd-hai.herokuapp.com
+      - run:
+           command: |
+            heroku container:push  -a cicd-hai.herokuapp.com --arg web 
+            heroku container:release  -a cicd-hai.herokuapp.com
 workflows:
   build-deploy:
     jobs:
