@@ -4,6 +4,7 @@ version: 2.1
 orbs:
   node: circleci/node@4.1
   docker: circleci/docker@1.7.0
+  heroku: circleci/heroku@1.2.6
 
 
 jobs:
@@ -29,33 +30,21 @@ jobs:
       - run:
           command: |
             echo "Digest is: $(</tmp/digest.txt)"
-  deploy:
-    environment:
-      HEROKU_LOGIN: minhhaizzzz98@gmail.com
-      HEROKU_API_KEY: a3930115-8c6a-4f22-940f-93115d6fe674
-    executor: docker/docker
-    steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "18:4a:f5:e4:15:19:4e:d6:86:53:70:c8:2d:f0:f8:89"
-      - run:
-          name: Login into Heroku Docker Repository
-          command: |
-            docker login --username=$HEROKU_LOGIN --password=$HEROKU_API_KEY cicd-hai.herokuapp.com
-      - run: 
-         heroku container:push  -a cicd-hai.herokuapp.com --arg web 
-         heroku container:release  -a << parameters.app-name >>
 workflows:
   build-deploy:
     jobs:
       - node/test
       - build-and-push:
           requires:
-              - node/test
+            - node/test
           filters:
             branches:
               only:
                 - main 
-      - deploy:
+      - heroku/deploy-via-git:
           requires:
             - build-and-push
+          filters:
+            branches:
+              only:
+                - main 
