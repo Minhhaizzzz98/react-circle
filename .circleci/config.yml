@@ -53,6 +53,4 @@ workflows:
             branches:
               only:
                 - main 
-      - deploy:
-          requires:
-            - build-and-push
+      - deploy
