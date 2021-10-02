@@ -58,4 +58,4 @@ workflows:
                 - main 
       - deploy:
           requires:
-            - build-and-push
+              - build-and-push
