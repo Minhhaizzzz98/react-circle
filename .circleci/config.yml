@@ -51,11 +51,11 @@ workflows:
       - node/test
       - build-and-push:
           requires:
-              - node/test
+            - node/test
           filters:
             branches:
               only:
                 - main 
       - deploy:
           requires:
-              - build-and-push
+            - build-and-push
