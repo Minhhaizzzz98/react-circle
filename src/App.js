@@ -20,6 +20,9 @@ function App() {
         <h1>
           helludvvvv
         </h1>
+        <h2>
+          h3 nè
+        </h2>
       </header>
     </div>
   );
